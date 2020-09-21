@@ -1,6 +1,6 @@
-using PhysicsJul
 using Test
+using PhysicsJul
 
 @testset "PhysicsJul.jl" begin
-    # Write your tests here.
+    PhysicsJul.my_f(2,3)
 end
