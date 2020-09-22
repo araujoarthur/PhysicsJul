@@ -1,8 +1,7 @@
 module PhysicsJul
 
-greet() = print("Hello World")
-
 include("positionalAstroV.jl")
+include("numericHelper.jl")
 
 
 end # module
