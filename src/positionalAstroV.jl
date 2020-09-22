@@ -1,4 +1,7 @@
 function HourToDegree(Str)
+    if  typeof(Str) != String
+        throw(ArgumentError("Invalid Type [Expected: Sring]"))
+    end
     DegreePos = 0
     MinPos = 0
     SecPos = 0
@@ -18,7 +21,7 @@ function HourToDegree(Str)
     elseif occursin("s",Str)
         SecPos =  findfirst(isequal('s'), Str)
     else
-       throw(ArgumentError("Invalid Format"))
+       throw(ArgumentError("Invalid Format [Expected: 05d20m05s]"))
     end
     DegreePos == 0 ? DegreeNumber = 0 : DegreeNumber = parse(Float64,Str[1:DegreePos-1])
     MinPos == 0 ? MinNumber = 0 : MinNumber = parse(Float64, Str[DegreePos+1:MinPos-1])
@@ -30,7 +33,11 @@ end
 
 function DegreeToTime(Numeric)
     if  typeof(Numeric) != Float64 && typeof(Numeric) != Int64
-        throw(ArgumentError("Invalid Type"))
+        throw(ArgumentError("Invalid Type [Expected: Float64 or Int64]"))
     end
-    #WORK FROM HERE
+    Degrees = floor(Numeric)
+    Minutes = floor(degreeToMinute(decimalPart(Numeric)))
+    Seconds = floor(minuteToSecond(decimalPart(degreeToMinute(decimalPart(Numeric)))))
+    return string(Degrees,"°",Minutes,'"',Seconds,"'")
+
 end
