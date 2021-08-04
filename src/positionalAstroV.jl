@@ -32,7 +32,7 @@ function HourToDegree(Str)
 end
 
 function DegreeToTime(Numeric)
-    if  typeof(Numeric) != Float64 && typeof(Numeric) != Int64
+    if  typeof(Numeric) != Float64 || typeof(Numeric) != Int64
         throw(ArgumentError("Invalid Type [Expected: Float64 or Int64]"))
     end
     Degrees = floor(Numeric)
